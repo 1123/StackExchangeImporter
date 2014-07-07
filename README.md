@@ -16,6 +16,8 @@ within the project root directory to add the jar and sources jar to your local m
 
 ##### Usage
 
+Using the importer is most easily understood looking at the classes within the src/main/test directory. The PostImporter class also contains a main method you can use.
+
 ```Java
 PostImporter.importPosts(100l, POSTS_FILE);
 ```
