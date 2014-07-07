@@ -1,5 +1,7 @@
 package org.stackexchange.dumps.importer.posts;
 
+import org.stackexchange.dumps.importer.GenericUnmarshaller;
+
 import javax.xml.bind.JAXBException;
 import java.io.*;
 import java.util.Iterator;
@@ -9,11 +11,11 @@ public class PostReader implements Iterator<Post> {
 
     BufferedReader bufferedReader;
     private Post nextPost;
-    PostUnmarshaller postUnmarshaller;
+    GenericUnmarshaller<Post> postUnmarshaller;
 
     public PostReader(String path) throws FileNotFoundException, JAXBException {
         File file = new File(path);
-        this.postUnmarshaller = new PostUnmarshaller();
+        this.postUnmarshaller = new GenericUnmarshaller<Post>(Post.class);
         this.bufferedReader = new BufferedReader(new FileReader(file));
         this.nextPost = this.nextInternal();
     }

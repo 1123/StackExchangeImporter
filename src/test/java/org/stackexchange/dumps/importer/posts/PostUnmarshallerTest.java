@@ -1,6 +1,7 @@
 package org.stackexchange.dumps.importer.posts;
 
 import org.junit.Test;
+import org.stackexchange.dumps.importer.GenericUnmarshaller;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;import java.lang.String;
@@ -25,7 +26,7 @@ public class PostUnmarshallerTest {
                 "AnswerCount=\"2\" " +
                 "CommentCount=\"0\" " +
                 "FavoriteCount=\"3\" />";
-        Post post = new PostUnmarshaller().unmarshal(line);
+        Post post = new GenericUnmarshaller<Post>(Post.class).unmarshal(line);
         assertTrue(post.getId() == 1);
         assertTrue(post.getPostTypeId() == 1);
         assertTrue(post.getOwnerUserId() == 5);
