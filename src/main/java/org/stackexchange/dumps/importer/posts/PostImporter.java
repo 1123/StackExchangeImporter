@@ -5,14 +5,13 @@ import java.io.FileNotFoundException;
 
 public class PostImporter {
 
-    private static final String POSTS_FILE = "src/test/resources/Posts.xml";
 
     public static void main(String [] args) throws FileNotFoundException, JAXBException {
-        importPosts(Long.MAX_VALUE);
+        importPosts(Long.parseLong(args[0]), args[1]);
     }
 
-    public static void importPosts(final long number) throws FileNotFoundException, JAXBException {
-        PostReader postReader = new PostReader(POSTS_FILE);
+    public static void importPosts(final long number, String file) throws FileNotFoundException, JAXBException {
+        PostReader postReader = new PostReader(file);
         PostWriter postWriter = new PostWriter();
         postWriter.open();
         int count = 0;
