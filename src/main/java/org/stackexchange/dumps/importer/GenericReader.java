@@ -1,4 +1,4 @@
-package org.stackexchange.dumps.importer.posts;
+package org.stackexchange.dumps.importer;
 
 import org.stackexchange.dumps.importer.GenericUnmarshaller;
 
@@ -7,17 +7,17 @@ import java.io.*;
 import java.util.Iterator;
 import java.util.function.Consumer;
 
-public class PostReader implements Iterator<Post> {
+public class GenericReader <T> implements Iterator<T> {
 
     BufferedReader bufferedReader;
-    private Post nextPost;
-    GenericUnmarshaller<Post> postUnmarshaller;
+    private T nextItem;
+    GenericUnmarshaller<T> genericUnmarshaller;
 
-    public PostReader(String path) throws FileNotFoundException, JAXBException {
+    public GenericReader(String path, Class<T> t) throws FileNotFoundException, JAXBException {
         File file = new File(path);
-        this.postUnmarshaller = new GenericUnmarshaller<Post>(Post.class);
+        this.genericUnmarshaller = new GenericUnmarshaller<T>(t);
         this.bufferedReader = new BufferedReader(new FileReader(file));
-        this.nextPost = this.nextInternal();
+        this.nextItem = this.nextInternal();
     }
 
     public void close() {
@@ -29,12 +29,12 @@ public class PostReader implements Iterator<Post> {
     }
 
 
-    private Post nextInternal() {
+    private T nextInternal() {
         String line;
         try {
             while ((line = bufferedReader.readLine()) != null) {
-                Post post = this.postUnmarshaller.unmarshal(line);
-                if (post != null) return post;
+                T t = this.genericUnmarshaller.unmarshal(line);
+                if (t != null) return t;
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -44,13 +44,13 @@ public class PostReader implements Iterator<Post> {
 
     @Override
     public boolean hasNext() {
-        return (nextPost != null);
+        return (nextItem != null);
     }
 
     @Override
-    public Post next() {
-        Post result = nextPost;
-        this.nextPost = this.nextInternal();
+    public T next() {
+        T result = nextItem;
+        this.nextItem = this.nextInternal();
         return result;
     }
 
@@ -60,7 +60,7 @@ public class PostReader implements Iterator<Post> {
     }
 
     @Override
-    public void forEachRemaining(Consumer<? super Post> action) {
+    public void forEachRemaining(Consumer<? super T> action) {
         throw new UnsupportedOperationException();
     }
 }

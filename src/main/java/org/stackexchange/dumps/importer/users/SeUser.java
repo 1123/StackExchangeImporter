@@ -1,5 +1,6 @@
 package org.stackexchange.dumps.importer.users;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -8,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @XmlRootElement(name = "row")
-public class User {
+public class SeUser {
 
     @Id
     @XmlAttribute(name = "Id")
@@ -30,6 +31,7 @@ public class User {
     public String location;
 
     @XmlAttribute(name = "AboutMe")
+    @Column(columnDefinition="TEXT")
     public String aboutMe;
 
     @XmlAttribute(name = "Views")

@@ -1,6 +1,7 @@
 package org.stackexchange.dumps.importer.posts;
 
 import org.junit.Test;
+import org.stackexchange.dumps.importer.GenericImporter;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
@@ -18,6 +19,6 @@ public class PostImporterTest {
 
     @Test
     public void test() throws FileNotFoundException, JAXBException {
-        PostImporter.importPosts(100l, POSTS_FILE);
+        GenericImporter.importFile(100l, POSTS_FILE, Post.class);
     }
 }

@@ -27,7 +27,7 @@ public class UserUnmarshallerTest {
                 "UpVotes=\"891\" " +
                 "DownVotes=\"11395\" " +
                 "EmailHash=\"a007be5a61f6aa8f3e85ae2fc18dd66e\" />";
-        User user = new GenericUnmarshaller<User>(User.class).unmarshal(line);
+        SeUser user = new GenericUnmarshaller<SeUser>(SeUser.class).unmarshal(line);
         assertEquals(user.id, -1);
         assertEquals(user.reputation, 1);
         assertEquals(user.displayName, "Community");

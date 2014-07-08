@@ -13,5 +13,6 @@
         <property name="show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
         <mapping class="org.stackexchange.dumps.importer.posts.Post"/>
+        <mapping class="org.stackexchange.dumps.importer.users.SeUser"/>
     </session-factory>
 </hibernate-configuration>

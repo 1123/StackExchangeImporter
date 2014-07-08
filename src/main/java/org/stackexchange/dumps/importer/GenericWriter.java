@@ -1,11 +1,11 @@
-package org.stackexchange.dumps.importer.posts;
+package org.stackexchange.dumps.importer;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.ImprovedNamingStrategy;
 
-public class PostWriter {
+public class GenericWriter<T> {
 
     SessionFactory sessionFactory;
     Session session;
@@ -18,8 +18,8 @@ public class PostWriter {
         this.session.getTransaction().begin();
     }
 
-    public void write(Post post) {
-        this.session.save(post);
+    public void write(T t) {
+        this.session.save(t);
     }
 
     public void close() {
