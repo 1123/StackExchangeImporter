@@ -1,8 +1,9 @@
-package org.stackexchange.dumps.importer.posts;
+package org.stackexchange.dumps.importer.io;
 
 import com.google.gson.Gson;
 import org.junit.Test;
 import org.stackexchange.dumps.importer.GenericReader;
+import org.stackexchange.dumps.importer.domain.Post;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;import java.lang.System;

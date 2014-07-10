@@ -1,8 +1,9 @@
-package org.stackexchange.dumps.importer.posts;
+package org.stackexchange.dumps.importer.io;
 
 import org.junit.Test;
 import org.stackexchange.dumps.importer.GenericUnmarshaller;
 import org.stackexchange.dumps.importer.GenericWriter;
+import org.stackexchange.dumps.importer.domain.Post;
 
 import javax.xml.bind.JAXBException;import java.lang.String;
 

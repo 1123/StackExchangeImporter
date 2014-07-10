@@ -1,9 +1,8 @@
-package org.stackexchange.dumps.importer.users;
+package org.stackexchange.dumps.importer.importing;
 
 import org.junit.Test;
 import org.stackexchange.dumps.importer.GenericImporter;
-import org.stackexchange.dumps.importer.GenericUnmarshaller;
-import org.stackexchange.dumps.importer.posts.Post;
+import org.stackexchange.dumps.importer.domain.SeUser;
 
 import javax.xml.bind.JAXBException;
 

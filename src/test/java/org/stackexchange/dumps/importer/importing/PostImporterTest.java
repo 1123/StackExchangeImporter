@@ -1,7 +1,8 @@
-package org.stackexchange.dumps.importer.posts;
+package org.stackexchange.dumps.importer.importing;
 
 import org.junit.Test;
 import org.stackexchange.dumps.importer.GenericImporter;
+import org.stackexchange.dumps.importer.domain.Post;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;

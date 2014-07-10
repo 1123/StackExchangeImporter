@@ -1,6 +1,6 @@
 package org.stackexchange.dumps.importer;
 
-import org.stackexchange.dumps.importer.posts.Post;
+import org.stackexchange.dumps.importer.domain.Post;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;

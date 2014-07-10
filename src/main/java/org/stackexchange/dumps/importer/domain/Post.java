@@ -1,4 +1,4 @@
-package org.stackexchange.dumps.importer.posts;
+package org.stackexchange.dumps.importer.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

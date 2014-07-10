@@ -1,7 +1,8 @@
-package org.stackexchange.dumps.importer.posts;
+package org.stackexchange.dumps.importer.unmarshalling;
 
 import org.junit.Test;
 import org.stackexchange.dumps.importer.GenericUnmarshaller;
+import org.stackexchange.dumps.importer.domain.Post;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;import java.lang.String;

@@ -1,14 +1,12 @@
-package org.stackexchange.dumps.importer.users;
+package org.stackexchange.dumps.importer.unmarshalling;
 
 import org.junit.Test;
 import org.stackexchange.dumps.importer.GenericUnmarshaller;
-import org.stackexchange.dumps.importer.posts.Post;
+import org.stackexchange.dumps.importer.domain.SeUser;
 
 import javax.xml.bind.JAXBException;
-import java.io.FileNotFoundException;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
 
 public class UserUnmarshallerTest {
 
