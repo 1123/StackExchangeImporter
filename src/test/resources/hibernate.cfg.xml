@@ -15,5 +15,7 @@
         <mapping class="org.stackexchange.dumps.importer.domain.Post"/>
         <mapping class="org.stackexchange.dumps.importer.domain.SeUser"/>
         <mapping class="org.stackexchange.dumps.importer.domain.Comment"/>
+        <mapping class="org.stackexchange.dumps.importer.domain.Vote"/>
+        <mapping class="org.stackexchange.dumps.importer.domain.Badge"/>
     </session-factory>
 </hibernate-configuration>
