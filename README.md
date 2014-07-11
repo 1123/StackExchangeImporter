@@ -23,9 +23,18 @@ within the project root directory to add the jar and sources jar to your local m
 
 ##### Usage
 
+Start your relational database you want to import to. Then adjust the hibernate.cfg.xml file to point to your database.
+Be sure to get the host name, database name, schema name, port number, user and password correct.
+
 Using the importer is most easily understood looking at the classes within the
 src/main/test directory. Here is an example of how to import posts:
+
+###### Calling from Java
 
 ```Java
 Importer.importPosts("/path/to/your/posts.xml")
 ```
+
+###### Importing from the shell
+
+There is no main method yet which could be called to do this. If it is needed, just add a feature request.
