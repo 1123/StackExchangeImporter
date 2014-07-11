@@ -1,8 +1,15 @@
 ##### Overview
 
-This project allows to import stackexchange dumps into a postgres database. Technologies used are Java, Hibernate and JAXB. Currently only import of posts and users is possible, but this can be easily extended to comments, badges, votes, etc, since all files have similar relational structure. 
+This project allows to import stackexchange dumps into a postgres database.
+Technologies used are Java, Hibernate and JAXB. Currently importing of posts,
+users, badges, comments and votes is possible, but this can be easily extended to all data.
 
-Importing into a relational database is the first step in mining data from the stackexchange sites (most importantly from stackoverflow). I hope this project may be useful to others.
+This project focuses on clean code, complete test coverage, brevity,
+maintainability, ease of use and efficiency.
+
+Importing into a relational database is the first step in mining data from the
+stackexchange sites (most importantly from stackoverflow). I hope this project
+may be useful to others.
 
 ##### Building
 
@@ -16,8 +23,9 @@ within the project root directory to add the jar and sources jar to your local m
 
 ##### Usage
 
-Using the importer is most easily understood looking at the classes within the src/main/test directory. The PostImporter class also contains a main method you can use.
+Using the importer is most easily understood looking at the classes within the
+src/main/test directory. Here is an example of how to import posts:
 
 ```Java
-PostImporter.importPosts(100l, POSTS_FILE);
+Importer.importPosts("/path/to/your/posts.xml")
 ```

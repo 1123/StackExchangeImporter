@@ -1,32 +1,36 @@
 package org.stackexchange.dumps.importer;
 
 import org.junit.Test;
-import org.stackexchange.dumps.importer.domain.*;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 
-public class GenericImporterTest {
+public class ImporterTest {
     private static final String POSTS_FILE = "src/test/resources/Posts.xml";
+
+    Importer importer;
+
+    public ImporterTest() {
+        this.importer = new ImporterImpl();
+    }
 
     @Test
     public void testPosts() throws FileNotFoundException, JAXBException {
-        GenericImporter.importFile(100l, POSTS_FILE, Post.class);
+        this.importer.importPosts(POSTS_FILE);
     }
 
     private static final String BADGES_FILE = "src/test/resources/Badges.xml";
 
     @Test
     public void testBadges() throws FileNotFoundException, JAXBException {
-        GenericImporter.importFile(100l, BADGES_FILE, Badge.class);
+        this.importer.importBadges(BADGES_FILE);
     }
-
 
     private static final String COMMENTS_FILE = "src/test/resources/Comments.xml";
 
     @Test
     public void testComments() throws FileNotFoundException, JAXBException {
-        GenericImporter.importFile(100l, COMMENTS_FILE, Comment.class);
+        this.importer.importComments(COMMENTS_FILE);
     }
 
 
@@ -34,14 +38,14 @@ public class GenericImporterTest {
 
     @Test
     public void testUsers() throws FileNotFoundException, JAXBException {
-        GenericImporter.importFile(100l, USERS_FILE, SeUser.class);
+        this.importer.importUsers(USERS_FILE);
     }
 
     private static final String VOTES_FILE = "src/test/resources/Votes.xml";
 
     @Test
     public void testVotes() throws FileNotFoundException, JAXBException {
-        GenericImporter.importFile(100l, VOTES_FILE, Vote.class);
+        this.importer.importVotes(VOTES_FILE);
     }
 
 }
