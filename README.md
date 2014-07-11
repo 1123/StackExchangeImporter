@@ -32,8 +32,8 @@ src/main/test directory. Here is an example of how to import posts:
 ###### Calling from Java
 
 ```Java
-Importer importer = new ImporterImpl()
-importer.importPosts("/path/to/your/posts.xml")
+Importer importer = new ImporterImpl();
+importer.importPosts("/path/to/your/posts.xml");
 ```
 
 ###### Importing from the shell
