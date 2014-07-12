@@ -50,7 +50,11 @@
                 <prop key="hibernate.format_sql">false</prop>
                 <prop key="hibernate.generate_statistics">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy"</prop>
             </props>
+        </property>
+        <property name="namingStrategy">
+            <bean class="org.hibernate.cfg.ImprovedNamingStrategy" />
         </property>
     </bean>
 
