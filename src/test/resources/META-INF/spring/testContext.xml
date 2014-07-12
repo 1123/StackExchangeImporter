@@ -34,7 +34,7 @@
             <list>
                 <value>org.stackexchange.dumps.importer.domain.Post</value>
                 <value>org.stackexchange.dumps.importer.domain.Badge</value>
-                <value>org.stackexchange.dumps.importer.domain.Comment</value> yx
+                <value>org.stackexchange.dumps.importer.domain.Comment</value>
                 <value>org.stackexchange.dumps.importer.domain.SeUser</value>
                 <value>org.stackexchange.dumps.importer.domain.Vote</value>
             </list>
