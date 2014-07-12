@@ -1,20 +1,16 @@
 package org.stackexchange.dumps.importer;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.cfg.ImprovedNamingStrategy;
 
 public class GenericWriter<T> {
 
-    SessionFactory sessionFactory;
     Session session;
 
+    public GenericWriter(Session session) {
+        this.session = session;
+    }
+
     public void open() {
-        this.sessionFactory = new Configuration().setNamingStrategy(ImprovedNamingStrategy.INSTANCE)
-                .configure() // configures settings from hibernate.cfg.xml
-                .buildSessionFactory();
-        this.session = sessionFactory.openSession();
         this.session.getTransaction().begin();
     }
 

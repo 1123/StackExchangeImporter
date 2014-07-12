@@ -11,9 +11,6 @@ import static junit.framework.Assert.assertEquals;
 
 public class VoteUnmarshallerTest {
 
-    //   <row Id="87" PostId="33" VoteTypeId="2" CreationDate="2010-07-28T00:00:00.000" />
-    // TODO: test parsing of dates.
-
     @Test
     public void test() throws JAXBException {
         final String line =

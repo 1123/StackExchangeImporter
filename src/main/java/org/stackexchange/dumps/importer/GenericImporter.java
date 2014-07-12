@@ -1,19 +1,16 @@
 package org.stackexchange.dumps.importer;
 
-import org.stackexchange.dumps.importer.domain.Post;
+import org.hibernate.Session;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 
 public class GenericImporter {
 
-    public static void main(String [] args) throws FileNotFoundException, JAXBException {
-        importFile(Long.parseLong(args[0]), args[1], Post.class);
-    }
-
-    public static <T> void importFile(final long number, String file, Class<T> t) throws FileNotFoundException, JAXBException {
+    public static <T> void importFile(Session session, final long number, String file, Class<T> t)
+            throws FileNotFoundException, JAXBException {
         GenericReader<T> genericReader = new GenericReader<T>(file, t);
-        GenericWriter<T> genericWriter = new GenericWriter<T>();
+        GenericWriter<T> genericWriter = new GenericWriter<T>(session);
         genericWriter.open();
         int count = 0;
         while (genericReader.hasNext() && count < number) {

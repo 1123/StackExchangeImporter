@@ -1,7 +1,5 @@
 package org.stackexchange.dumps.importer;
 
-import org.stackexchange.dumps.importer.GenericUnmarshaller;
-
 import javax.xml.bind.JAXBException;
 import java.io.*;
 import java.util.Iterator;

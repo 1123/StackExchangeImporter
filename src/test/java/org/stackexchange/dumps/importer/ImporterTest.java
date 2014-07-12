@@ -1,18 +1,21 @@
 package org.stackexchange.dumps.importer;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.inject.Inject;
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "/META-INF/spring/testContext.xml" })
 public class ImporterTest {
     private static final String POSTS_FILE = "src/test/resources/Posts.xml";
 
+    @Inject
     Importer importer;
-
-    public ImporterTest() {
-        this.importer = new ImporterImpl();
-    }
 
     @Test
     public void testPosts() throws FileNotFoundException, JAXBException {

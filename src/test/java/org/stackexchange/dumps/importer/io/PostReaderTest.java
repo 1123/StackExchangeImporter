@@ -17,7 +17,6 @@ public class PostReaderTest {
         GenericReader<Post> postReader = new GenericReader<Post>(POSTS_FILE, Post.class);
         while (postReader.hasNext()) {
             Post post = postReader.next();
-            System.err.println(new Gson().toJson(post));
         }
         postReader.close();
     }
