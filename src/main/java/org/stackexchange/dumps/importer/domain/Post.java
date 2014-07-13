@@ -68,9 +68,6 @@ public class Post {
     @XmlAttribute(name = "Id")
     private Integer id;
 
-    @XmlAttribute(name = "PostId")
-    private Integer postId;
-
     @XmlAttribute(name = "UserId")
     private Integer userId;
 
@@ -113,10 +110,6 @@ public class Post {
     @XmlAttribute(name = "Body")
     @Column(columnDefinition="TEXT")
     private String body;
-
-    public Integer getPostId() {
-        return postId;
-    }
 
     public Integer getUserId() {
         return userId;
