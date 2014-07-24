@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/1123/StackExchangeImporter.png)](https://travis-ci.org/1123/StackExchangeImporter)
+
 ##### Overview
 
 This project allows to import StackExchange dumps into relational databases.
