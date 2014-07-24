@@ -14,6 +14,10 @@ public class ImporterImpl implements Importer {
     @Inject
     SessionFactory sessionFactory;
 
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public void importPosts(String postsFile) throws FileNotFoundException, JAXBException {
         GenericImporter.importFile(this.sessionFactory.openSession(), Long.MAX_VALUE, postsFile, Post.class);

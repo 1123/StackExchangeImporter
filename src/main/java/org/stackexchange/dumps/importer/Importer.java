@@ -1,9 +1,13 @@
 package org.stackexchange.dumps.importer;
 
+import org.hibernate.SessionFactory;
+
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 
 public interface Importer {
+
+    public void setSessionFactory(SessionFactory sessionFactory);
 
     public void importPosts(String postsFile) throws FileNotFoundException, JAXBException;
 
