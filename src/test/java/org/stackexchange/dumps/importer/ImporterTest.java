@@ -1,6 +1,5 @@
 package org.stackexchange.dumps.importer;
 
-import org.hibernate.cfg.ImprovedNamingStrategy;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -11,7 +10,7 @@ import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/META-INF/spring/testContext.xml" })
+@ContextConfiguration(classes = { TestConfig.class })
 public class ImporterTest {
     private static final String POSTS_FILE = "src/test/resources/Posts.xml";
 
@@ -26,7 +25,7 @@ public class ImporterTest {
     private static final String BADGES_FILE = "src/test/resources/Badges.xml";
 
     @Test
-    public void testBadges() throws FileNotFoundException, JAXBException {
+    public void testBadges() throws FileNotFoundException, JAXBException, FileNotFoundException {
         this.importer.importBadges(BADGES_FILE);
     }
 
