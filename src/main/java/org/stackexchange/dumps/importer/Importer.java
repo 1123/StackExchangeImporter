@@ -18,5 +18,7 @@ public interface Importer {
     public void importUsers(String usersFile) throws FileNotFoundException, JAXBException;
 
     public void importComments(String commentsFile) throws FileNotFoundException, JAXBException;
+
+    public void importPostHistory(String historyFile) throws FileNotFoundException, JAXBException;
 }
 

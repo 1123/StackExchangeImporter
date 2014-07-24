@@ -42,4 +42,10 @@ public class ImporterImpl implements Importer {
     public void importComments(String commentsFile) throws FileNotFoundException, JAXBException {
         GenericImporter.importFile(this.sessionFactory.openSession(), Long.MAX_VALUE, commentsFile, Comment.class);
     }
+
+    @Override
+    public void importPostHistory(String historyFile) throws FileNotFoundException, JAXBException {
+        GenericImporter.importFile(this.sessionFactory.openSession(), Long.MAX_VALUE, historyFile, PostHistory.class);
+    }
+
 }

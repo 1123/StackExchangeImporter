@@ -51,4 +51,11 @@ public class ImporterTest {
         this.importer.importVotes(VOTES_FILE);
     }
 
+    private static final String POST_HISTORY_FILE = "src/test/resources/PostHistory.xml";
+
+    @Test
+    public void testPostHistory() throws FileNotFoundException, JAXBException {
+        this.importer.importPostHistory(POST_HISTORY_FILE);
+    }
+
 }

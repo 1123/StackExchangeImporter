@@ -47,7 +47,7 @@ public class TestConfig {
         result.setDataSource(this.h2DataSource());
         // result.setDataSource(this.postgresDataSource());
         result.setMappingLocations();
-        result.setAnnotatedClasses(Post.class, Comment.class, SeUser.class, Vote.class, Badge.class);
+        result.setAnnotatedClasses(Post.class, Comment.class, SeUser.class, Vote.class, Badge.class, PostHistory.class);
         Properties hibernateProperties = new Properties();
         // TODO: the dialect should be dependent on the selected datasource. PostgresDialect seems to work with H2 currently,
         // but this may cause trouble in the future.
