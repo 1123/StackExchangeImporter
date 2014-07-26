@@ -3,15 +3,24 @@
 ##### Overview
 
 This project allows to import StackExchange dumps into relational databases.
-Technologies used are Java, Hibernate/JPA and JAXB. Currently importing of posts,
-users, badges, comments and votes is possible, but this can be easily extended
-to all data. Importing has been tested with postgres and H2, but should also be
+Technologies used are Java, Hibernate/JPA for writing and JAXB for parsing. Currently importing of posts, post history, 
+users, badges, comments and votes is possible. Importing has been tested with postgres and H2, but should also be
 possible with any relational database that works with hibernate:
 
 https://community.jboss.org/wiki/SupportedDatabases2
 
 This project focuses on clean code, complete test coverage, brevity,
 maintainability, ease of use and efficiency.
+
+The dumps are currently hosted by archive.org 
+
+https://archive.org/details/stackexchange
+
+and are released under a creative commons license:
+
+http://creativecommons.org/licenses/by-sa/3.0/
+
+Tiny excerpts of these dumps are included in the test/resources directory for testing purposes.
 
 Importing into a relational database is the first step in mining data from the
 stackexchange sites (most importantly from stackoverflow). I hope this project
