@@ -27,7 +27,7 @@ public class PostUnmarshallerTest {
                 "AnswerCount=\"2\" " +
                 "CommentCount=\"0\" " +
                 "FavoriteCount=\"3\" />";
-        Post post = new GenericUnmarshaller<Post>(Post.class).unmarshal(line);
+        Post post = new GenericUnmarshaller<Post>(Post.class).unmarshal(line).get();
         assertTrue(post.getId() == 1);
         assertTrue(post.getPostTypeId() == 1);
         assertTrue(post.getOwnerUserId() == 5);

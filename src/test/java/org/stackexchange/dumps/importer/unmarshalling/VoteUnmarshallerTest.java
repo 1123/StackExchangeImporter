@@ -15,7 +15,7 @@ public class VoteUnmarshallerTest {
     public void test() throws JAXBException {
         final String line =
                 "<row Id=\"87\" PostId=\"33\" VoteTypeId=\"2\" CreationDate=\"2010-07-28T00:00:00.000\" />";
-        Vote vote = new GenericUnmarshaller<Vote>(Vote.class).unmarshal(line);
+        Vote vote = new GenericUnmarshaller<Vote>(Vote.class).unmarshal(line).get();
         assertEquals(vote.id, 87);
         assertEquals(vote.postId, 33);
         assertEquals(vote.voteTypeId, 2);

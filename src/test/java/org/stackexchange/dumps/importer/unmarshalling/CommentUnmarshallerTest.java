@@ -20,7 +20,7 @@ public class CommentUnmarshallerTest {
                 "Score=\"3\" " +
                 "Text=\"Marco, thank you for your answer, you seem to have an excellent grasp of home folder encryption. Just for the benefit of less technical users, can you spare me all the technical detail and answer the question as if I were asking as a computer-illiterate user?\" " +
                 "CreationDate=\"2010-07-28T20:00:33.260\" UserId=\"56\" />";
-        Comment comment = new GenericUnmarshaller<Comment>(Comment.class).unmarshal(line);
+        Comment comment = new GenericUnmarshaller<Comment>(Comment.class).unmarshal(line).get();
         assertEquals(comment.id, 57);
         assertEquals(comment.postId, 62);
         assertEquals(comment.score, 3);

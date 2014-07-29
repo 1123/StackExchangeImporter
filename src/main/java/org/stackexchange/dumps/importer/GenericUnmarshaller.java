@@ -4,6 +4,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.StringReader;
+import java.util.Optional;
 
 public class GenericUnmarshaller<T> {
 
@@ -14,14 +15,14 @@ public class GenericUnmarshaller<T> {
         unmarshaller = context.createUnmarshaller();
     }
 
-    public T unmarshal(String line) {
+    public Optional<T> unmarshal(String line) {
         try {
             T t = (T) unmarshaller.unmarshal(new StringReader(line));
-            return t;
+            return Optional.of(t);
         } catch (JAXBException e) {
             System.err.println("could not parse line: " + line);
         }
-        return null;
+        return Optional.empty();
     }
 
 }
