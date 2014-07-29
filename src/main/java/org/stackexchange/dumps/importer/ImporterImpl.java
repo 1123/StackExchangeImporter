@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 
-@Service
+@Service(value = "importer")
 public class ImporterImpl implements Importer {
 
     @Inject
