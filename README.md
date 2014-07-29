@@ -28,7 +28,7 @@ may be useful to others. Contributing is more than welcome.
 
 ##### Building
 
-Maven and Java >= 1.7 is needed for building this project. Once mvn is installed and this
+Maven and Java >= 1.8 is needed for building this project. Once mvn is installed and this
 project is checked out via git, you can run 
 
 ```
@@ -76,5 +76,18 @@ behavior.
 
 ###### Importing from the shell
 
-There is no main method yet which could be called to do this. If it is needed,
-just add a feature request.
+Edit the LocalSessionFactoryBean within ImporterContext.java to point to the
+database that you want to import to -- or leave it pointing to the in-memory H2
+instance, which is configured by default. 
+
+Use the mvn assemply plugin to create a jar that includes all dependencies:
+
+```bash
+mvn clean compile assembly:single
+```
+
+Then execute the following, possibly changing the path to your Posts.xml file:
+
+```bash
+java -jar target/StackExchangeImporter-1.0-SNAPSHOT-jar-with-dependencies.jar posts src/test/resources/Posts.xml
+```
