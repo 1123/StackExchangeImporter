@@ -44,8 +44,8 @@ public class ImporterContext {
     LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean result = new LocalSessionFactoryBean();
         // you may swith between Postgres, H2 Datasources by commenting out one of the following lines:
-        // result.setDataSource(this.h2DataSource());
-        result.setDataSource(this.postgresDataSource());
+        result.setDataSource(this.h2DataSource());
+        // result.setDataSource(this.postgresDataSource());
         result.setMappingLocations();
         result.setAnnotatedClasses(Post.class, PostLink.class, Comment.class, SeUser.class, Vote.class, Badge.class, PostHistory.class, Tag.class);
         Properties hibernateProperties = new Properties();
