@@ -1,11 +1,15 @@
 package org.stackexchange.dumps.importer.domain;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -64,6 +68,8 @@ public class Post {
         return body;
     }
 
+    public String getTitle() { return title; }
+
     @Id
     @XmlAttribute(name = "Id")
     private Integer id;
@@ -107,5 +113,26 @@ public class Post {
     @XmlAttribute(name = "Body")
     @Column(columnDefinition="TEXT")
     private String body;
+
+    @XmlAttribute(name = "Title")
+    @Column(columnDefinition="TEXT")
+    private String title;
+
+    @XmlAttribute(name = "Tags")
+    private String tags;
+
+    /**
+     * Unfortunately, the tags are not delivered as structured xml, but encoded within a single XML attribute value. Therefore
+     * manual parsing is necessary here. This method is not used when saving the data to the database. It may be useful for postprocessing though.
+     *
+     * For running reports based upon tags it may be useful to compute a many to many relationship between posts and tags.
+     *
+     * @return the list of tags
+     */
+    public List<String> getTagList() {
+        String unescaped = StringEscapeUtils.unescapeHtml4(this.tags);
+        String trimmed = unescaped.substring(1, unescaped.length() - 1);
+        return Arrays.asList(trimmed.split("><"));
+    }
 
 }

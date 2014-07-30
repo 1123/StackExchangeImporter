@@ -37,6 +37,9 @@ public class PostUnmarshallerTest {
         assertTrue(post.getScore() == 35);
         assertTrue(post.getViewCount() == 1086);
         assertTrue(post.getBody().contains("Everytime I turn on"));
+        assertTrue(post.getTitle().contains("Your battery is broken"));
+        assertTrue(post.getTagList().contains("battery"));
+        assertTrue(post.getTagList().contains("notification"));
     }
 
 }
