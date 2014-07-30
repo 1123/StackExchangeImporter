@@ -89,5 +89,8 @@ mvn clean compile assembly:single
 Then execute the following, possibly changing the path to your Posts.xml file:
 
 ```bash
-java -jar target/StackExchangeImporter-1.0-SNAPSHOT-jar-with-dependencies.jar posts src/test/resources/Posts.xml
+java -jar target/StackExchangeImporter-1.0-SNAPSHOT-jar-with-dependencies.jar posts src/test/resources/beer/Posts.xml
 ```
+
+Valid values for the first parameter are those of the Enum Main.FILE: 
+posts, comments, users, votes, badges, post_history, tags, post_links

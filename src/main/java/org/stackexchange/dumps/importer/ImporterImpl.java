@@ -53,4 +53,9 @@ public class ImporterImpl implements Importer {
         GenericImporter.importFile(this.sessionFactory.openSession(), Long.MAX_VALUE, tagFile, Tag.class);
     }
 
+    @Override
+    public void importPostLinks(String postLinkFile) throws FileNotFoundException, JAXBException {
+        GenericImporter.importFile(this.sessionFactory.openSession(), Long.MAX_VALUE, postLinkFile, PostLink.class);
+    }
+
 }

@@ -22,5 +22,7 @@ public interface Importer {
     public void importPostHistory(String historyFile) throws FileNotFoundException, JAXBException;
 
     public void importTags(String tagFile) throws FileNotFoundException, JAXBException;
+
+    public void importPostLinks(String postLinkFile) throws FileNotFoundException, JAXBException;
 }
 

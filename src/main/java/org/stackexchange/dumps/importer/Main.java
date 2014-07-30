@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
  */
 public class Main {
 
-    private enum FILE { posts, comments, users, votes, badges, post_history, tags }
+    private enum FILE { posts, comments, users, votes, badges, post_history, tags, post_links }
 
     public static void main(String [] args) throws FileNotFoundException, JAXBException {
         if (args.length != 2)
@@ -40,6 +40,9 @@ public class Main {
                 break;
             case tags:
                 importer.importTags(args[1]);
+                break;
+            case post_links:
+                importer.importPostLinks(args[1]);
                 break;
 
         }

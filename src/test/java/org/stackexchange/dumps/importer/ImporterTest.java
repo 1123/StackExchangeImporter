@@ -51,4 +51,10 @@ public class ImporterTest {
         this.importer.importTags(Files.TAG_FILE);
     }
 
+    @Test
+    public void testPostLinks() throws FileNotFoundException, JAXBException {
+        this.importer.importPostLinks(Files.POST_LINKS_FILE);
+    }
+
+
 }
