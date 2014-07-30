@@ -11,7 +11,6 @@ import java.io.IOException;import java.lang.System;
 
 public class PostReaderTest {
 
-
     @Test
     public void test() throws JAXBException, IOException {
         GenericReader<Post> postReader = new GenericReader<Post>(Files.POSTS_FILE, Post.class);

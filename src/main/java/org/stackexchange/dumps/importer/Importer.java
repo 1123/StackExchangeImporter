@@ -20,5 +20,7 @@ public interface Importer {
     public void importComments(String commentsFile) throws FileNotFoundException, JAXBException;
 
     public void importPostHistory(String historyFile) throws FileNotFoundException, JAXBException;
+
+    public void importTags(String tagFile) throws FileNotFoundException, JAXBException;
 }
 

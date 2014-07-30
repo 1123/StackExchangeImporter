@@ -46,4 +46,9 @@ public class ImporterTest {
         this.importer.importPostHistory(Files.POST_HISTORY_FILE);
     }
 
+    @Test
+    public void testTags() throws FileNotFoundException, JAXBException {
+        this.importer.importTags(Files.TAG_FILE);
+    }
+
 }

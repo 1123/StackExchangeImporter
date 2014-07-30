@@ -9,5 +9,5 @@ public class Files {
     public static final String USERS_FILE = DIRECTORY + "Users.xml";
     public static final String VOTES_FILE = DIRECTORY + "Votes.xml";
     public static final String POST_HISTORY_FILE = DIRECTORY + "PostHistory.xml";
-
+    public static final String TAG_FILE = DIRECTORY + "Tags.xml";
 }

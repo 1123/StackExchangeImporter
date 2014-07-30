@@ -48,4 +48,9 @@ public class ImporterImpl implements Importer {
         GenericImporter.importFile(this.sessionFactory.openSession(), Long.MAX_VALUE, historyFile, PostHistory.class);
     }
 
+    @Override
+    public void importTags(String tagFile) throws FileNotFoundException, JAXBException {
+        GenericImporter.importFile(this.sessionFactory.openSession(), Long.MAX_VALUE, tagFile, Tag.class);
+    }
+
 }
