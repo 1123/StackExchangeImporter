@@ -2,9 +2,7 @@ package org.stackexchange.dumps.importer.domain;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Arrays;

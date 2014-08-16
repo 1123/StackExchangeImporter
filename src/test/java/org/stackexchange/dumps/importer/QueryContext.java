@@ -1,15 +1,11 @@
 package org.stackexchange.dumps.importer;
 
 import org.apache.commons.dbcp.BasicDataSource;
-import org.hibernate.cfg.ImprovedNamingStrategy;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
@@ -18,13 +14,34 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan("org.stackexchange")
-public class ImporterContext {
+public class QueryContext {
 
-    @Bean(destroyMethod = "shutdown")
-    public EmbeddedDatabase h2DataSource() {
-        return new EmbeddedDatabaseBuilder().
-                setType(EmbeddedDatabaseType.H2).
-                build();
+    /**
+     * The entities for querying are different from the entities for importing. When importing, we do not care about the relations.
+     * When querying, relations between entities are important.
+     *
+     * EntityManagers obviously allow only one type of entity for the same table. Thus we need different entityManagers and entityManagerFactories for
+     * querying and importing. This Context is used for querying.
+     *
+     * @return An entityManagerFactory that generates entityManagers that associate the query entities supporting relations/foreign keys with the tables in the database.
+     */
+
+    @Bean
+    LocalContainerEntityManagerFactoryBean queryEntityManagerFactoryBean() {
+        LocalContainerEntityManagerFactoryBean result = new LocalContainerEntityManagerFactoryBean();
+        // result.setDataSource(this.h2DataSource());
+        result.setDataSource(this.postgresDataSource());
+        result.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
+        Properties props = new Properties();
+        props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL82Dialect");
+        props.put("hibernate.show_sql", "true");
+        props.put("hibernate.generate_statistics", "true");
+        props.put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
+        result.setJpaProperties(props);
+        result.setPackagesToScan("org.stackexchange.querying");
+        result.setPersistenceUnitName("stackexchangeQuerying");
+        result.setPersistenceProvider(new HibernatePersistenceProvider());
+        return result;
     }
 
     @Bean
@@ -42,30 +59,11 @@ public class ImporterContext {
     }
 
     @Bean
-    LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
-        LocalContainerEntityManagerFactoryBean result = new LocalContainerEntityManagerFactoryBean();
-        // result.setDataSource(this.h2DataSource());
+    JpaTransactionManager transactionManager() {
+        JpaTransactionManager result = new JpaTransactionManager();
         result.setDataSource(this.postgresDataSource());
-        result.setLoadTimeWeaver(new InstrumentationLoadTimeWeaver());
-        Properties props = new Properties();
-        props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL82Dialect");
-        props.put("hibernate.hbm2ddl.auto", "create");
-        props.put("hibernate.show_sql", "true");
-        props.put("hibernate.generate_statistics", "true");
-        props.put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
-        result.setJpaProperties(props);
-        result.setPackagesToScan("org.stackexchange.dumps.importer.domain");
-        result.setPersistenceUnitName("stackexchange");
-        result.setPersistenceProvider(new HibernatePersistenceProvider());
-        result.setPersistenceProviderClass(org.hibernate.jpa.HibernatePersistenceProvider.class);
+        result.setEntityManagerFactory(this.queryEntityManagerFactoryBean().getObject());
         return result;
     }
 
-    @Bean
-    JpaTransactionManager transactionManager() {
-        JpaTransactionManager result = new JpaTransactionManager();
-        result.setDataSource(this.h2DataSource());
-        result.setEntityManagerFactory(this.entityManagerFactoryBean().getObject());
-        return result;
-    }
 }

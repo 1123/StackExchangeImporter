@@ -2,7 +2,7 @@ package org.stackexchange.dumps.importer;
 
 public class Files {
 
-    private static final String DIRECTORY = "src/test/resources/beer/";
+    public static final String DIRECTORY = "src/test/resources/beer/";
     public static final String POSTS_FILE = DIRECTORY + "Posts.xml";
     public static final String BADGES_FILE = DIRECTORY + "Badges.xml";
     public static final String COMMENTS_FILE = DIRECTORY + "Comments.xml";

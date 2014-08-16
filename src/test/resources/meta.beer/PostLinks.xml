@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<postlinks>
+  <row Id="24" CreationDate="2014-01-21T21:53:17.400" PostId="10" RelatedPostId="11" LinkTypeId="1" />
+  <row Id="25" CreationDate="2014-01-21T21:54:57.053" PostId="11" RelatedPostId="10" LinkTypeId="1" />
+  <row Id="46" CreationDate="2014-01-22T02:41:20.337" PostId="10" RelatedPostId="11" LinkTypeId="3" />
+  <row Id="116" CreationDate="2014-01-27T15:23:40.737" PostId="47" RelatedPostId="1" LinkTypeId="1" />
+  <row Id="117" CreationDate="2014-01-27T15:23:40.737" PostId="47" RelatedPostId="4" LinkTypeId="1" />
+  <row Id="138" CreationDate="2014-01-31T17:17:53.840" PostId="55" RelatedPostId="8" LinkTypeId="1" />
+  <row Id="169" CreationDate="2014-02-10T04:50:11.757" PostId="67" RelatedPostId="55" LinkTypeId="1" />
+  <row Id="291" CreationDate="2014-03-09T04:42:41.043" PostId="70" RelatedPostId="55" LinkTypeId="1" />
+  <row Id="306" CreationDate="2014-03-23T21:07:22.263" PostId="74" RelatedPostId="22" LinkTypeId="1" />
+</postlinks>

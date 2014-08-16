@@ -45,6 +45,11 @@
     <dependencies>
         <dependency>
             <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.3.5.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>4.3.5.Final</version>
         </dependency>
@@ -87,11 +92,6 @@
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>3.2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>4.1.1.Final</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.extras</groupId>

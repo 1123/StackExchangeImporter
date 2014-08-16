@@ -2,6 +2,7 @@ package org.stackexchange.dumps.importer;
 
 import org.junit.Test;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.stackexchange.dumps.importer.domain.Post;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
@@ -11,11 +12,9 @@ public class TestWithoutSpring {
 
     @Test
     public void test() throws IOException, JAXBException {
-        LocalSessionFactoryBean factory = new TestConfig().sessionFactory();
-        factory.afterPropertiesSet();
-        Importer importer = new ImporterImpl();
-        importer.setSessionFactory(factory.getObject());
-        importer.importPosts(Files.POSTS_FILE);
+        GenericImporterImpl importer = new GenericImporterImpl();
+        importer.setEntityManager(new TestConfig().entityManagerFactoryBean().getObject().createEntityManager());
+        importer.importFile(Files.POSTS_FILE, Post.class);
     }
 
 }
