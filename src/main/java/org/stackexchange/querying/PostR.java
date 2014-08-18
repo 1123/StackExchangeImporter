@@ -7,7 +7,7 @@ import java.util.List;
 @Table(name="post")
 public class PostR {
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "post")
     private List<CommentR> comments;
 
     @Id

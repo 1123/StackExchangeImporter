@@ -34,7 +34,6 @@ public class CommentRDao {
         this.em.persist(comment);
     }
 
-    @Transactional()
     public CommentR find(int id) {
         return this.em.find(CommentR.class, id);
     }

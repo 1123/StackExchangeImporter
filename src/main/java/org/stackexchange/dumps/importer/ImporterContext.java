@@ -1,7 +1,6 @@
 package org.stackexchange.dumps.importer;
 
 import org.apache.commons.dbcp.BasicDataSource;
-import org.hibernate.cfg.ImprovedNamingStrategy;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

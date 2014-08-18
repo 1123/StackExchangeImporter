@@ -1,25 +1,22 @@
 package org.stackexchange.querying.dao;
 
 import org.springframework.stereotype.Repository;
-import org.stackexchange.querying.PostR;
+import org.stackexchange.querying.UserR;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-
 
 @Repository
-public class PostRDao {
+public class UserRDao {
 
     @PersistenceContext(unitName="stackexchangeQuerying")
     private EntityManager em;
 
-    @Transactional()
-    public void store(PostR post) {
-        this.em.persist(post);
+    public void store(UserR user) {
+        this.em.persist(user);
     }
 
-    public PostR find(int id) {
-        return this.em.find(PostR.class, id);
+    public UserR find(int id) {
+        return this.em.find(UserR.class, id);
     }
 }
