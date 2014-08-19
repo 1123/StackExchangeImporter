@@ -10,6 +10,7 @@ import org.stackexchange.dumps.importer.QueryContext;
 import org.stackexchange.dumps.importer.TestConfig;
 import org.stackexchange.querying.CommentR;
 import org.stackexchange.querying.PostR;
+import org.stackexchange.querying.UserR;
 import org.stackexchange.querying.dao.CommentRDao;
 import org.stackexchange.querying.dao.PostRDao;
 
@@ -17,11 +18,12 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.Arrays;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { QueryContext.class })
-public class JpaTransactionTest {
+public class CommentRDaoTest {
 
     @Inject
     private transient CommentRDao commentDao;
@@ -37,31 +39,36 @@ public class JpaTransactionTest {
 
     private Pair<CommentR, PostR> sampleCommentAndPost() {
         CommentR comment = new CommentR();
-        comment.id = 1;
+        comment.id = 1111111111;
         PostR post = new PostR();
-        post.id = 2;
+        post.id = 222222222;
         post.setComments(Arrays.asList(comment));
         comment.setPost(post);
         return new ImmutablePair<CommentR, PostR>(comment, post);
     }
 
     /**
-     * Create a comment and a post, link them to each other, then store both.
-     * Test the count functionality of the CommentDao.
+     * 1) Create a comment and a post.
+     * 2) Link them to each other.
+     * 3) Create a user and link it to the comment.
+     * 4) Store both post and comment.
+     * 2) Test the count functionality of the CommentDao.
      *
-     * Create a copy of the stored comment with a new Id. Test the count functionality again.
+     * 3) Create a copy of the stored comment with a new Id.
+     * 4) Test the count functionality again.
      *
      */
     @Test
     @Transactional
     public void testComment() {
-        assertSame(0L, commentDao.countComments());
+        long countBefore = commentDao.countComments();
         Pair<CommentR, PostR> pair = this.sampleCommentAndPost();
+        pair.getLeft().setUser(new UserR(5));
         this.postDao.store(pair.getRight());
         this.commentDao.store(pair.getLeft());
-        assertSame(1L, commentDao.countComments());
+        assertEquals(countBefore + 1L, commentDao.countComments());
         this.commentDao.createCopy(1,2);
-        assertSame(2L, commentDao.countComments());
+        assertEquals(countBefore + 2L, commentDao.countComments());
     }
 
 }
