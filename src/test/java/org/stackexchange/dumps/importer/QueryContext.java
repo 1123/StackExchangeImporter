@@ -45,6 +45,7 @@ public class QueryContext {
         props.put("hibernate.show_sql", "true");
         props.put("hibernate.generate_statistics", "true");
         props.put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
+        props.put("hibernate.default_schema", "stackexchange");
         result.setJpaProperties(props);
         result.setPackagesToScan("org.stackexchange.querying");
         result.setPersistenceUnitName("stackexchangeQuerying");

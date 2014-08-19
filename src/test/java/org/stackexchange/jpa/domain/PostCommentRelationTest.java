@@ -10,12 +10,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.stackexchange.dumps.importer.QueryContext;
 import org.stackexchange.querying.CommentR;
 import org.stackexchange.querying.PostR;
+import org.stackexchange.querying.UserR;
 import org.stackexchange.querying.dao.CommentRDao;
 import org.stackexchange.querying.dao.PostRDao;
+import org.stackexchange.querying.dao.UserRDao;
 
 import javax.inject.Inject;
-import javax.xml.bind.JAXBException;
-import java.io.FileNotFoundException;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -30,18 +30,42 @@ public class PostCommentRelationTest {
     @Inject
     private transient PostRDao postDao;
 
+    @Inject
+    private transient UserRDao userDao;
+
+    /**
+     * Test that when retrieving comments, the corresponding post and user is also retrieved.
+     */
+
     @Test
-    public void testComment() throws FileNotFoundException, JAXBException {
+    public void testComment() {
         CommentR comment = commentDao.find(8);
         assertNotNull(comment);
         assertNotNull(comment.getPost());
+        assertNotNull(comment.getUser());
     }
+
+    /**
+     * Test that when retrieving posts, the corresponding comments and the user are also retrieved.
+     */
 
     @Test
     public void testPost() {
         PostR c = postDao.find(16);
         assertNotNull(c);
         assertFalse(c.getComments().isEmpty());
+        assertNotNull(c.getUser());
+    }
+
+    /**
+     * Test that the relations from Users to Posts and Comments are retrieved.
+     */
+
+    @Test
+    public void testUser() {
+        UserR user = userDao.find(7);
+        assertFalse(user.getComments().isEmpty());
+        assertFalse(user.getPosts().isEmpty());
     }
 
 }

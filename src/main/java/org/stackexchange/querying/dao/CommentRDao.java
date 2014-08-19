@@ -16,7 +16,7 @@ public class CommentRDao {
     private EntityManager em;
 
     @Transactional()
-    public Long countComments() {
+    public long countComments() {
         Query query = em.createQuery("SELECT COUNT(comment.id) FROM CommentR comment");
         return (Long) query.getSingleResult();
     }

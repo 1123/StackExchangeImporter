@@ -4,15 +4,44 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="post")
+@Table(name="se_user")
 public class UserR {
 
     @Id
     public int id;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    private List<CommentR> comments;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    private List<PostR> posts;
+
     public int reputation;
 
-    public String displayname;
+    public String displayName;
 
+    public UserR(int id) {
+        this.id = id;
+    }
+
+    public UserR() {
+        // for hibernate
+    }
+
+    public List<CommentR> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentR> comments) {
+        this.comments = comments;
+    }
+
+    public List<PostR> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<PostR> posts) {
+        this.posts = posts;
+    }
 }
 
