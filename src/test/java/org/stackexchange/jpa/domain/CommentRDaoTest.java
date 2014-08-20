@@ -6,8 +6,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.stackexchange.dumps.importer.QueryContext;
-import org.stackexchange.dumps.importer.TestConfig;
 import org.stackexchange.querying.CommentR;
 import org.stackexchange.querying.PostR;
 import org.stackexchange.querying.UserR;

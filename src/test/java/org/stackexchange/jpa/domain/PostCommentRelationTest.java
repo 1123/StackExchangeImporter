@@ -1,13 +1,9 @@
 package org.stackexchange.jpa.domain;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import org.hibernate.Hibernate;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.stackexchange.dumps.importer.QueryContext;
 import org.stackexchange.querying.CommentR;
 import org.stackexchange.querying.PostR;
 import org.stackexchange.querying.UserR;
@@ -66,6 +62,7 @@ public class PostCommentRelationTest {
         UserR user = userDao.find(7);
         assertFalse(user.getComments().isEmpty());
         assertFalse(user.getPosts().isEmpty());
+        assertFalse(user.getBadges().isEmpty());
     }
 
 }

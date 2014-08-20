@@ -1,4 +1,4 @@
-package org.stackexchange.dumps.importer;
+package org.stackexchange.jpa.domain;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.jpa.HibernatePersistenceProvider;

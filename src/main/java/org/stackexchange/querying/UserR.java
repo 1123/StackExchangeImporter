@@ -11,10 +11,13 @@ public class UserR {
     public int id;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-    private List<CommentR> comments;
+    private List<BadgeR> badges;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private List<PostR> posts;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    private List<CommentR> comments;
 
     public int reputation;
 
@@ -42,6 +45,14 @@ public class UserR {
 
     public void setPosts(List<PostR> posts) {
         this.posts = posts;
+    }
+
+    public List<BadgeR> getBadges() {
+        return badges;
+    }
+
+    public void setBadges(List<BadgeR> badges) {
+        this.badges = badges;
     }
 }
 

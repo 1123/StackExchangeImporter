@@ -15,7 +15,6 @@ import java.io.FileNotFoundException;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestConfig.class })
 @Transactional
-@TransactionConfiguration(defaultRollback = false)
 public class ImporterTest {
 
     @Inject

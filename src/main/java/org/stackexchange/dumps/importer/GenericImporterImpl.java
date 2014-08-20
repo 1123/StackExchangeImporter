@@ -41,7 +41,7 @@ public class GenericImporterImpl implements GenericImporter {
         return result;
     }
 
-    @Transactional(Transactional.TxType.REQUIRES_NEW)
+    @Transactional()
     @Override
     public void importDirectory(String directory) throws FileNotFoundException, JAXBException {
         @SuppressWarnings("unchecked")
@@ -51,7 +51,7 @@ public class GenericImporterImpl implements GenericImporter {
         }
     }
 
-    @Transactional(Transactional.TxType.REQUIRES_NEW)
+    @Transactional()
     @Override
     public <T> void importFile(final long number, String file, Class<T> t)
             throws FileNotFoundException, JAXBException {
