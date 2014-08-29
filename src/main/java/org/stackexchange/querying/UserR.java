@@ -10,14 +10,18 @@ public class UserR {
     @Id
     public int id;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<BadgeR> badges;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<PostR> posts;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<CommentR> comments;
+
+    public int downVotes;
+    public int upVotes;
+    public int views;
 
     public int reputation;
 
@@ -25,6 +29,9 @@ public class UserR {
 
     public UserR(int id) {
         this.id = id;
+        this.downVotes = 0;
+        this.upVotes = 0;
+        this.views = 0;
     }
 
     public UserR() {

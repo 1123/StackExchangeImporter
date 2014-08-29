@@ -1,4 +1,4 @@
-package org.stackexchange.dumps.importer;
+package org.stackexchange.dumps.importer.services;
 
 import javax.xml.bind.JAXBException;
 import java.io.*;

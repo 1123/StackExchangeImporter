@@ -14,6 +14,9 @@ public class CommentR {
     @JoinColumn(name = "user_id")
     private UserR user;
 
+    @Column(columnDefinition="TEXT")
+    public String text;
+
     @Id
     public Integer id;
 
@@ -34,4 +37,5 @@ public class CommentR {
     public void setUser(UserR user) {
         this.user = user;
     }
+
 }

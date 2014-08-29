@@ -12,24 +12,14 @@ import javax.transaction.Transactional;
 @Repository
 public class CommentRDao {
 
-    @PersistenceContext(unitName="stackexchangeQuerying")
+    @PersistenceContext
     private EntityManager em;
 
-    @Transactional()
     public long countComments() {
-        Query query = em.createQuery("SELECT COUNT(comment.id) FROM CommentR comment");
+        Query query = em.createQuery("SELECT COUNT(c) FROM CommentR c");
         return (Long) query.getSingleResult();
     }
 
-    @Transactional()
-    public void createCopy(int oldId, int newId) {
-        CommentR copyComment = this.em.find(CommentR.class, oldId);
-        this.em.detach(copyComment);
-        copyComment.id = newId;
-        this.em.persist(copyComment);
-    }
-
-    @Transactional()
     public void store(CommentR comment) {
         this.em.persist(comment);
     }

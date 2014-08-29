@@ -1,5 +1,6 @@
-package org.stackexchange.dumps.importer;
+package org.stackexchange.dumps.importer.services;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.stackexchange.dumps.importer.domain.*;
 
@@ -16,7 +17,7 @@ import java.util.Map;
 @Service
 public class GenericImporterImpl implements GenericImporter {
 
-    @PersistenceContext(unitName="stackexchange")
+    @PersistenceContext
     private EntityManager em;
 
     public void setEntityManager(EntityManager em) {

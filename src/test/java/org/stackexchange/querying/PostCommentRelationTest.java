@@ -1,23 +1,26 @@
-package org.stackexchange.jpa.domain;
+package org.stackexchange.querying;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.stackexchange.querying.CommentR;
-import org.stackexchange.querying.PostR;
-import org.stackexchange.querying.UserR;
+import org.stackexchange.querying.contexts.prefilled.H2FileQueryContext;
+import org.stackexchange.querying.contexts.prefilled.PostgresQueryContext;
 import org.stackexchange.querying.dao.CommentRDao;
 import org.stackexchange.querying.dao.PostRDao;
 import org.stackexchange.querying.dao.UserRDao;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
+
+/**
+ * This is an integration test. It is part fo the {@link QueryIntegrationTestSuite}.
+ */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { QueryContext.class })
+@ContextConfiguration(classes = { PostgresQueryContext.class })
 public class PostCommentRelationTest {
 
     @Inject
@@ -34,11 +37,14 @@ public class PostCommentRelationTest {
      */
 
     @Test
+    @Transactional
     public void testComment() {
         CommentR comment = commentDao.find(8);
         assertNotNull(comment);
         assertNotNull(comment.getPost());
         assertNotNull(comment.getUser());
+        assertTrue(comment.getPost().getBody().contains("opinion-based"));
+        assertSame(comment.getUser().getBadges().get(0).id, 8);
     }
 
     /**
@@ -47,7 +53,7 @@ public class PostCommentRelationTest {
 
     @Test
     public void testPost() {
-        PostR c = postDao.find(16);
+        PostR c = postDao.find(15);
         assertNotNull(c);
         assertFalse(c.getComments().isEmpty());
         assertNotNull(c.getUser());
@@ -58,6 +64,7 @@ public class PostCommentRelationTest {
      */
 
     @Test
+    @Transactional
     public void testUser() {
         UserR user = userDao.find(7);
         assertFalse(user.getComments().isEmpty());

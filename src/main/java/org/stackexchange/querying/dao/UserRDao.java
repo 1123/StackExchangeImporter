@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 @Repository
 public class UserRDao {
 
-    @PersistenceContext(unitName="stackexchangeQuerying")
+    @PersistenceContext
     private EntityManager em;
 
     public void store(UserR user) {

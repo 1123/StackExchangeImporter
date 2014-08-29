@@ -1,6 +1,6 @@
 package org.stackexchange.dumps.importer;
 
-public class Files {
+public class BeerFiles {
 
     public static final String DIRECTORY = "src/test/resources/beer/";
     public static final String POSTS_FILE = DIRECTORY + "Posts.xml";

@@ -14,6 +14,8 @@ public class PostR {
     @JoinColumn(name = "owner_user_id")
     private UserR user;
 
+    private String body;
+
     @Id
     public int id;
 
@@ -33,6 +35,14 @@ public class PostR {
 
     public void setUser(UserR user) {
         this.user = user;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }
 

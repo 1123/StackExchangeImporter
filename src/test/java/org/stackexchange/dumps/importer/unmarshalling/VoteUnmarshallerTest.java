@@ -1,8 +1,7 @@
 package org.stackexchange.dumps.importer.unmarshalling;
 
 import org.junit.Test;
-import org.stackexchange.dumps.importer.GenericUnmarshaller;
-import org.stackexchange.dumps.importer.domain.SeUser;
+import org.stackexchange.dumps.importer.services.GenericUnmarshaller;
 import org.stackexchange.dumps.importer.domain.Vote;
 
 import javax.xml.bind.JAXBException;

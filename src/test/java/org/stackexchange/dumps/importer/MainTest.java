@@ -10,7 +10,7 @@ public class MainTest {
 
     @Test
     public void testPosts() throws FileNotFoundException, JAXBException, ClassNotFoundException {
-        Main.main(new String[] {"Post", Files.POSTS_FILE });
+        Main.main(new String[] {"Post", BeerFiles.POSTS_FILE });
     }
 
     @Test(expected = ClassNotFoundException.class)
@@ -20,7 +20,7 @@ public class MainTest {
 
     @Test
     public void testVotes() throws FileNotFoundException, JAXBException, ClassNotFoundException {
-        Main.main(new String[] {"Vote", Files.VOTES_FILE });
+        Main.main(new String[] {"Vote", BeerFiles.VOTES_FILE });
     }
 
 }

@@ -11,10 +11,9 @@ import javax.transaction.Transactional;
 @Repository
 public class PostRDao {
 
-    @PersistenceContext(unitName="stackexchangeQuerying")
+    @PersistenceContext
     private EntityManager em;
 
-    @Transactional()
     public void store(PostR post) {
         this.em.persist(post);
     }
