@@ -12,7 +12,7 @@ public class PostgresImporterContext extends AbstractImporterContext {
     @Bean
     DataSource postgresDataSource() {
         BasicDataSource result = new BasicDataSource();
-        result.setUsername("linse");
+        result.setUsername("postgres");
         result.setUrl("jdbc:postgresql://localhost:5432/test");
         result.setPassword("");
         result.setMaxActive(100);

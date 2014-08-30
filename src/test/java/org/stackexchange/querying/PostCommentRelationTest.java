@@ -1,5 +1,6 @@
 package org.stackexchange.querying;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,8 +20,10 @@ import static org.junit.Assert.*;
  * This is an integration test. It is part fo the {@link QueryIntegrationTestSuite}.
  */
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PostgresQueryContext.class })
+@Ignore // Setting this test to Ignore, since it is already run by the test suite.
 public class PostCommentRelationTest {
 
     @Inject
