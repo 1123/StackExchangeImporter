@@ -2,14 +2,18 @@
 
 ##### Overview
 
-This project allows to import StackExchange dumps into relational databases. 
-Importing of all entities (posts, post history, users, comments, badges, votes, post links, tags) 
-available to download is supported.
-Technologies used are Java, Hibernate/JPA for writing and JAXB for parsing. 
-Importing has been tested with postgres and H2, but should also be
-possible with any relational database that works with hibernate:
+This project allows to import StackExchange dumps into relational databases.
+Importing of all entities (posts, post history, users, comments, badges, votes,
+post links, tags) available to download is supported.  Technologies used are
+Java, Hibernate/JPA for writing and JAXB for parsing.  Importing has been
+tested with postgres and H2, but should also be possible with any relational
+database that works with hibernate:
 
 https://community.jboss.org/wiki/SupportedDatabases2
+
+A JPA data access object layer allows easy querying of the data since the
+object relational mapping is done by hibernate annotations. Examples of how to
+use this layer can be found in the test cases.
 
 This project focuses on clean code, complete test coverage, brevity,
 maintainability, ease of use and efficiency.
@@ -91,8 +95,7 @@ mvn clean compile assembly:single
 Then execute the following, possibly changing the path to your Posts.xml file:
 
 ```bash
-java -jar target/StackExchangeImporter-1.0-SNAPSHOT-jar-with-dependencies.jar posts src/test/resources/beer/Posts.xml
+java -jar target/StackExchangeImporter-1.0-SNAPSHOT-jar-with-dependencies.jar Post src/test/resources/beer/Posts.xml
 ```
 
-Valid values for the first parameter are those of the Enum Main.FILE: 
-posts, comments, users, votes, badges, post_history, tags, post_links
+Valid values for the first parameter are the names of the classes in the package org.stackexchange.dumps.importer.domain: Post, PostHistory, Badge, SeUser, Vote, Tag, Comment, PostLink.

@@ -28,8 +28,6 @@ public abstract class AbstractImporterContext {
         Properties props = new Properties();
         props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL82Dialect");
         props.put("hibernate.hbm2ddl.auto", "create");
-        props.put("hibernate.show_sql", "true");
-        props.put("hibernate.generate_statistics", "true");
         props.put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
         result.setJpaProperties(props);
         result.setPackagesToScan("org.stackexchange.dumps.importer.domain");
