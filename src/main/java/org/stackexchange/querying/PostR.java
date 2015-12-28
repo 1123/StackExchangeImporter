@@ -1,10 +1,13 @@
 package org.stackexchange.querying;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name="post")
+@Data
 public class PostR {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "post")
@@ -21,28 +24,5 @@ public class PostR {
 
     public int score = 0;
 
-    public List<CommentR> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<CommentR> comments) {
-        this.comments = comments;
-    }
-
-    public UserR getUser() {
-        return user;
-    }
-
-    public void setUser(UserR user) {
-        this.user = user;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
 }
 

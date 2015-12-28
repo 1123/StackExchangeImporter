@@ -3,7 +3,7 @@ package org.stackexchange.querying;
 import javax.persistence.*;
 
 @Entity()
-@Table(name="comment")
+@Table(name="badge")
 public class BadgeR {
 
     @ManyToOne(fetch = FetchType.LAZY)

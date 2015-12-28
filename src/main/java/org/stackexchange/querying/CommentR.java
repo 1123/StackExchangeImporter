@@ -1,9 +1,12 @@
 package org.stackexchange.querying;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity()
 @Table(name="comment")
+@Data
 public class CommentR {
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -21,21 +24,5 @@ public class CommentR {
     public Integer id;
 
     public Integer score = 0;
-
-    public PostR getPost() {
-        return post;
-    }
-
-    public void setPost(PostR post) {
-        this.post = post;
-    }
-
-    public UserR getUser() {
-        return user;
-    }
-
-    public void setUser(UserR user) {
-        this.user = user;
-    }
 
 }

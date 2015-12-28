@@ -47,7 +47,7 @@ public class PostCommentRelationTest {
         assertNotNull(comment.getPost());
         assertNotNull(comment.getUser());
         assertTrue(comment.getPost().getBody().contains("opinion-based"));
-        assertSame(comment.getUser().getBadges().get(0).id, 8);
+        assertSame(comment.getUser().getBadges().get(0).id, 46);
     }
 
     /**
