@@ -40,24 +40,20 @@ public class GenericReader <T> implements Iterator<T> {
         return Optional.empty();
     }
 
-    @Override
     public boolean hasNext() {
         return (nextItem.isPresent());
     }
 
-    @Override
     public T next() {
         T result = nextItem.isPresent() ? nextItem.get() : null;
         this.nextItem = this.nextInternal();
         return result;
     }
 
-    @Override
     public void remove() {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public void forEachRemaining(Consumer<? super T> action) {
         throw new UnsupportedOperationException();
     }

@@ -1,6 +1,5 @@
 package org.stackexchange.dumps.importer.services;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.stackexchange.dumps.importer.domain.*;
 
@@ -24,7 +23,6 @@ public class GenericImporterImpl implements GenericImporter {
         this.em = em;
     }
 
-    @Override
     public <T> void importFile(String file, Class<T> t) throws FileNotFoundException, JAXBException {
         this.importFile(Long.MAX_VALUE, file, t);
     }
@@ -43,7 +41,6 @@ public class GenericImporterImpl implements GenericImporter {
     }
 
     @Transactional()
-    @Override
     public void importDirectory(String directory) throws FileNotFoundException, JAXBException {
         @SuppressWarnings("unchecked")
         List<Class<?>> classes = Arrays.asList(Tag.class, Post.class, Vote.class, Comment.class, SeUser.class, PostLink.class, PostHistory.class, Badge.class);
@@ -53,7 +50,6 @@ public class GenericImporterImpl implements GenericImporter {
     }
 
     @Transactional()
-    @Override
     public <T> void importFile(final long number, String file, Class<T> t)
             throws FileNotFoundException, JAXBException {
         GenericReader<T> genericReader = new GenericReader<T>(file, t);
